@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
+from datasets import load_dataset
+from youtube import YoutubeQuery
 
 app = Flask(__name__)
 
@@ -48,7 +50,8 @@ def chatbot():
 def chatbot_api():
     user_input = request.json.get('input', '')
     chatbot_response = chatbot_interaction(user_input)
-    return jsonify({'message': chatbot_response})
+    YoutubeQuery(chatbot_response).run()
+    return '', 204 # this allows me to return nothing
 
 def chatbot_interaction(user_input):
     convo = model.start_chat(history=[])
@@ -59,3 +62,4 @@ def chatbot_interaction(user_input):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
