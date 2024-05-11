@@ -40,12 +40,15 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/chatbot', methods=['POST'])
+@app.route('/chatbot.html')
 def chatbot():
+    return render_template('chatbot.html')
+
+@app.route('/chatbot', methods=['POST'])  # Second route
+def chatbot_api():
     user_input = request.json.get('input', '')
     chatbot_response = chatbot_interaction(user_input)
     return jsonify({'message': chatbot_response})
-
 
 def chatbot_interaction(user_input):
     convo = model.start_chat(history=[])
