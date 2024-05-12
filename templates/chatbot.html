@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SpotiFinder - Chatbot</title>
+    <link rel="stylesheet" type="text/css" href="/static/chatbot.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">SpotiFinder</h1>
+            <div id="chat-messages"></div>
+            <div id="user-input-container">
+                <input type="text" id="user-input" placeholder="Enter a prompt here">
+            </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatContainer = document.getElementById('chat-messages');
+            const userInput = document.getElementById('user-input');
+
+            // Event listener for sending messages on Enter key press
+            userInput.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Function to send message and receive response
+            function sendMessage() {
+                const userMessage = userInput.value;
+                if (userMessage.trim() === '') return;
+
+                // Display user message
+                displayMessage(userMessage, 'user');
+
+                // Send user message to server
+                fetch('/chatbot', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ input: userMessage })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Display bot response
+                    displayMessage(data.message, 'bot');
+                })
+                .catch(error => console.error('Error:', error));
+
+                // Clear input field
+                userInput.value = '';
+            }
+
+            // Function to display messages in chat container
+            function displayMessage(message, sender) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', sender);
+                messageElement.innerText = message;
+                chatContainer.appendChild(messageElement);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            // Start chat when page loads
+            sendMessage();
+        });
+    </script>
+
+</body>
+</html>
