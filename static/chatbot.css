@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/background.png');
+    /* background-image: url('/static/background.png'); */
     background-size: cover;
     background-repeat: no-repeat; /* prevents repeating the background image */
     font-family: Arial, sans-serif;
@@ -8,17 +8,6 @@ body {
     height: 100vh;
     overflow-x: hidden; /* Hide horizontal overflow */
 }
-
-
-.title {
-    color:turquoise;
-    letter-spacing: -3px;
-    text-align: center;
-    font-size: 50px;
-    -webkit-text-stroke: 2px black;
-    font-weight: bold;
-}
-  
 
 
 
