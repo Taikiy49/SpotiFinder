@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 from youtube import YoutubeQuery  # Ensure you have this module imported if necessary
-from datasets import load_dataset  # Ensure you have this module imported if necessary
 
 app = Flask(__name__)
 
