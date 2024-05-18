@@ -56,6 +56,7 @@ def chatbot_api():
             video_title = item['snippet']['title']
             video_id = item['id']['videoId']
             videos.append({video_title + ":" + video_id})
+
     return jsonify({"message": f"{videos}"})
 
 
@@ -64,7 +65,6 @@ def chatbot_interaction(user_input):
     convo.send_message(user_input)
     bot_response = convo.last.text
     return bot_response
-
 
 
 

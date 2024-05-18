@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/background.png');
+    /* background-image: url('/static/background.png'); */
     background-size: cover;
     background-repeat: no-repeat; /* prevents repeating the background image */
     font-family: Arial, sans-serif;
@@ -7,35 +7,29 @@ body {
     padding: 0; /* Reset default padding */
     height: 100vh;
     overflow-x: hidden; /* Hide horizontal overflow */
+    background-color: black;
 }
-
 
 .title {
-    color:turquoise;
-    letter-spacing: -3px;
-    text-align: center;
-    font-size: 50px;
-    -webkit-text-stroke: 2px black;
-    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
 }
-  
+
+
+
+
 
 
 
 
 /* the actual chatbot part */
-#chatbot {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    padding: 20px;
-    border-top-left-radius: 20px; /* Add border radius to top left corner */
-}
 
-#chat-container {
-    max-height: 20vh; /* Limit the maximum height of the chat container */
-}
+
+
 
 #user-input-container {
     display: flex;
@@ -44,45 +38,12 @@ body {
 }
 
 #user-input {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
     flex: 1; /* Take remaining width */
-    padding: 10px; /* Add padding to the input field */
-    margin-right: 10px; /* Add some space between the input field and button */
-    background-color: #0b346e;
-    color: white;
-    
-}
-
-.message {
-    margin: 10px 0; /* Add margin to separate messages */
-    padding: 15px; /* Add padding to messages */
-    border-radius: 20px; /* Add border radius to messages */
-    max-width: 80%; /* Limit maximum width of messages */
-    color: white;
-}
-
-.user {
-    align-self: flex-end; /* Align user messages to the right */
-    color: white;
-}
-
-.bot {
-    align-self: flex-start; /* Align bot messages to the left */
-    color: white;
-}
-
-#chat-container {
-    max-height: 20vh; /* Limit the maximum height of the chat container */
-}
-
-#user-input-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px; /* Adjust margin as needed */
-}
-
-#user-input {
-    flex: 1; /* Take remaining width */
-    padding: 10px; /* Add padding to the input field */
     background-color: #0b346e;
     color: white;
     padding: 15px;
@@ -90,26 +51,11 @@ body {
 }
 
 .message {
-    margin: 10px 0; /* Add margin to separate messages */
-    padding: 15px; /* Add padding to messages */
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 100%);
     border-radius: 20px; /* Add border radius to messages */
-    max-width: 80%; /* Limit maximum width of messages */
+    max-width: 70%; /* Limit maximum width of messages */
     color: white;
-}
-
-.user {
-    align-self: flex-end; /* Align user messages to the right */
-    color: white;
-}
-
-.bot {
-    align-self: flex-start; /* Align bot messages to the left */
-    color: white;
-}
-
-
-#start-button {
-    justify-content: center;
-    align-items: center;
-    padding: 15x;
 }

@@ -1,29 +1,87 @@
 body {
-    background-image: url('/static/background.png');
+    /* background-image: url('/static/background.png'); */
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat; /* prevents repeating the background image */
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0; /* Reset default margin */
     padding: 0; /* Reset default padding */
     height: 100vh;
     overflow-x: hidden; /* Hide horizontal overflow */
+    position: relative; /* Position the body relative to its normal position */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    border: 2px solid white; /* Add white border */
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    animation: animateLeft 5s linear infinite;
+}
+
+
+body::after {
+    content: '';
+    position: absolute;
+    border: 2px solid white; /* Add white border */
+    animation: animateRight 5s linear infinite;
+}
+
+
+@keyframes animateLeft {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 100%;
+        height: 0%;
+    } 
+    100% {
+        width: 0;
+        height: 0;
+    }
 }
 
 .title {
-    color:turquoise;
-    letter-spacing: -3px;
-    text-align: center;
-    font-size: 50px;
-    -webkit-text-stroke: 2px black;
-    font-weight: bold;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 150px;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: -750px 0;
+    animation: backcolor 5s linear infinite alternate;
 }
-  
+
+@keyframes backcolor {
+    100%{
+        background-position: 0 0;
+    }
+}
+
   
 .subtitle {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.description {
+    position: absolute;
+    top: 60%;
     text-align: center;
     color: white;
-    font-size: 20px;
-    font-weight: bold;
+    max-width: 800px;
 }
 
 .container {
@@ -34,21 +92,51 @@ body {
     height: 100vh;
 }
 
-.description {
-    max-width: 600px;
-    text-align: center;
-    margin: 20px auto 0;
-    color: white;
+.start-button {
+    position: absolute;
+    background-color: white; /* Yellow background color */
+    cursor: pointer; /* Change cursor to pointer when hovering over the button */
+    padding: 20px 40px; /* Adjust padding for inner content */
+    top: 80%; /* Position the button vertically */
+    left: 50%; /* Position the button horizontally */
+    transform: translate(-50%, -50%); /* Center the button */
+    border-radius: 50px; /* Add border radius for rounded corners */
+    display: inline-block; /* Ensure the button takes only the necessary space */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition effect */
 }
 
-.start-button{
-    margin-top: 100px;
-    width: 400px;
-    height: 75px;
-    border-radius: 50px;
-    background-color: #0b346e;
-    color: white;
-    font-size: 25px;
-    font-weight: bold;
+.start-button:hover {
+    transform: translate(-50%, -50%) scale(1.05); /* Scale up button on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+
+.spotify-button{
+    border-radius: 50%;
     cursor: pointer;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 38%;
+    background-size: cover; /* Cover the entire button area */
+    background-position: center; /* Center the background image */
+}
+
+.spotify-button:hover{
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.discord-button{
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    width: 200px;
+    height: 147px;
+    top: 7%;
+    left: 48%; 
+}
+
+.discord-button:hover{
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
