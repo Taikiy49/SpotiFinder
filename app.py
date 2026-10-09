@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 from youtube import YoutubeQuery  # Ensure you have this module imported if necessary
@@ -5,7 +6,7 @@ from youtube import YoutubeQuery  # Ensure you have this module imported if nece
 app = Flask(__name__)
 
 # Configure generative AI model
-genai.configure(api_key="AIzaSyBd31J9setEcfjVr5tjNyRzjuQ4BpX_6K0")
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 generation_config = {
     "temperature": 1,
     "top_p": 0.95,

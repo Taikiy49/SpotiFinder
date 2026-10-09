@@ -1,0 +1,8 @@
+
+
+# Local credentials and Python caches
+.env
+.env.local
+.env.*.local
+__pycache__/
+*.pyc
